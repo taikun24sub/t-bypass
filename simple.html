@@ -1,0 +1,22 @@
+<html>
+<body>
+  <h1>T-bypass</h1>
+  <input id='url' value="https://example.com"></input>
+  <button onclick="document.body.innerHTML=await getData(document.getElementById('url').value);">Go!</button>
+  <script>
+    async function getData(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+     return (`レスポンスステータス: ${response.status}`);
+    }
+
+    return await response.text();
+  
+  } catch (error) {
+    alert(error.message);
+  }
+}
+  </script>
+</body>
+</html>
